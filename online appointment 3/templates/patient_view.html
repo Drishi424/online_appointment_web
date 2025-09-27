@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Doctors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Book an Appointment</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% for doc in doctors %}
+        <div>
+            <p><strong>Dr. {{ doc.name }}</strong></p>
+            <p>Expertise: {{ doc.expertise }}</p>
+            <p>Degree: {{ doc.degree }}</p>
+            <p>Experience: {{ doc.experience }}</p>
+            <p>Contact: {{ doc.contact }}</p>
+            <!-- <p>Status: <strong style="color: {{ 'limegreen' if doc.is_online else 'orange' }}">{{ 'Online' if doc.is_online else 'Offline' }}</strong></p> -->
+            <p>
+                Status:
+                <strong class="{{ 'online' if doc.is_online else 'offline' }}">
+                  {{ 'Online' if doc.is_online else 'Offline' }}
+                </strong>
+              </p>
+            <!-- <p>Total Patients checked : {{ doc.token_counter}}</p>  change -->
+              
+
+            <form method="post" action="{{ url_for('book_appointment', doc_id=doc.id) }}">
+                <label>Your Name:</label><input type="text" name="username" required><br>
+                <label>Phone Number:</label><input type="text" name="phone" required><br>
+                {% if not doc.is_online %}
+                    <label>Preferred Time:</label>
+                    <input type="datetime-local" name="preferred_time" required><br>
+                {% else %}
+                    <input type="hidden" name="preferred_time" value="N/A">
+                {% endif %}
+                <button type="submit">Book</button>
+            </form>
+        </div>
+    {% endfor %}
+
+    <br><a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Welcome Dr. {{ doctor.name }}</h2>
+    <p><strong>Expertise:</strong> {{ doctor.expertise }}</p>
+    <p><strong>Experience:</strong> {{ doctor.experience }}</p>
+    <p><strong>Degree:</strong> {{ doctor.degree }}</p>
+    <p><strong>Contact:</strong> {{ doctor.contact }}</p>
+    <p><strong>Status:</strong> {{ 'Online' if doctor.is_online else 'Offline' }}</p>
+
+    <a href="{{ url_for('toggle_status') }}">
+        <button>{{ 'Go Offline' if doctor.is_online else 'Go Online' }}</button>
+    </a>
+
+    <h3>📨 Pending Appointment Requests</h3>
+    {% if doctor.pending_requests %}
+        <ul>
+        {% for req in doctor.pending_requests %}
+            <li>
+                {{ req.name }} (📱 {{ req.phone }}) - ⏰ {{ req.preferred_time }}
+                <a href="{{ url_for('accept_request', req_index=loop.index0) }}"><button>Accept</button></a>
+                <a href="{{ url_for('reject_request', req_index=loop.index0) }}"><button>Reject</button></a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No pending requests</p>
+    {% endif %}
+
+    <h3>✅ Accepted Appointments</h3>
+    {% if doctor.accepted_appointments %}
+        <ul>
+        {% for appt in doctor.accepted_appointments %}
+            <li>
+                #{{ appt.token }} - {{ appt.name }} (📱 {{ appt.phone }})
+                <a href="{{ url_for('mark_attended', token=appt.token) }}"><button>Attended</button></a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No active appointments</p>
+    {% endif %}
+
+    <br><a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

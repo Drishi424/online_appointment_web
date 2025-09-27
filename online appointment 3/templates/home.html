@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Health Appointment System</h1>
+    <a href="{{ url_for('doctor_page') }}"><button>Doctor</button></a>
+    <a href="{{ url_for('patient_view') }}"><button>Patient</button></a>
+</body>
+</html>

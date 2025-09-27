@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Doctor Signup</h2>
+    <form method="post">
+        <label>ID:</label><input type="text" name="id" required><br>
+        <label>Password:</label><input type="password" name="password" required><br>
+        <label>Name:</label><input type="text" name="name" required><br>
+        <label>Expertise:</label><input type="text" name="expertise"><br>
+        <label>Experience:</label><input type="text" name="experience"><br>
+        <label>Degree:</label><input type="text" name="degree"><br>
+        <label>Contact No:</label><input type="text" name="contact"><br>
+        <button type="submit">Register</button>
+    </form>
+    <br>
+    <a href="{{ url_for('doctor_page') }}">Back to Login</a>
+</body>
+</html>
