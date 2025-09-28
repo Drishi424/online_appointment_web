@@ -1,4 +1,4 @@
-# 🩺 Online Appointment System
+<img width="1086" height="382" alt="image" src="https://github.com/user-attachments/assets/03e8ef26-a52a-4514-a008-5b268645d919" /># 🩺 Online Appointment System
 
 A simple Flask-based Online Appointment System where doctors and patients can manage appointments.  
 It includes features like doctor signup/login, online status management, patient appointment booking, and a doctor dashboard.
@@ -43,23 +43,31 @@ online appointment 3/
 ```bash
 git clone <repo_url>
 cd "online appointment 3"
+```
 
 2. Create a virtual environment (recommended)
+```bash
 python -m venv venv
+```
 # On Mac/Linux
+```bash
 source venv/bin/activate
+```
 # On Windows
+```bash
 venv\Scripts\activate
-
+```
 
 
 3. Install dependencies
+```bash
 pip install flask
-
+```
 ▶️ Usage
 Run the Flask app:
+```bash
 python app.py
-
+```
 Then open your browser and go to:
 http://127.0.0.1:5000/
 
