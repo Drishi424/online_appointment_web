@@ -3,7 +3,7 @@ import json, os
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'd7ca7dcbb103e83ee8ac817640167373'  # replace with your generated secret key
+app.secret_key = '  #replace with your generated secret key'
 
 DOCTOR_FILE = 'data/doctors.json'
 
@@ -186,3 +186,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
