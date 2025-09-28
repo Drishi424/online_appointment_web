@@ -1,4 +1,4 @@
-<img width="1086" height="382" alt="image" src="https://github.com/user-attachments/assets/03e8ef26-a52a-4514-a008-5b268645d919" /># 🩺 Online Appointment System
+# 🩺 Online Appointment System
 
 A simple Flask-based Online Appointment System where doctors and patients can manage appointments.  
 It includes features like doctor signup/login, online status management, patient appointment booking, and a doctor dashboard.
